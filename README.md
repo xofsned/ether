@@ -18,7 +18,7 @@ banuser, banguild, unban, list, setstatus, logout, leave
    ```
    Lines 78 - 87 admin id, guild id, roles, dev, notification channels
    ```
-3. Change bot ID in these places (or search / replace using 1147188428048437358):
+3. Change bot ID in these places (or search / replace using 1130638110196256828):
    ```
    366, 4351, 4366, 4509, 4619 + 4620, 4778, 5030, 5037
    ```
