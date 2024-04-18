@@ -1,17 +1,6 @@
----
-description: OpenAI Toolkit known as the blue moon goddess (Discord Bot)
----
-
 # 👋 Welcome to Ether
 
-Introduction
-
-> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord.&#x20;
-
-> Ether is amnesiac and does not collect or redistribute any user data other than its designated API calls between Discord and OpenAI.
-
-Ether is a toolkit and does not provide access to any integrated OpenAI API keys. Users must provide their own OpenAI keys to use in Ether.
-
+> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord
 ***
 
 ### All OpenAI options and models in a single session
@@ -35,8 +24,10 @@ Ether is a toolkit and does not provide access to any integrated OpenAI API keys
 > Ether uses an amnesiac approach in session handling, configurations, and data. Users can save their configurations and associations to file for later use which are sent to the user in direct message. Data given to Ether for embeddings is discarded after being embedded, and when a session is closed all variables are destroyed
 
 ***
-add erased details and instructions
-
+### Installing
+1. Requires Python3, pip3
+2. Some functionalities require: Libreoffice, Tshark
+3. Install requirements from requirements.txt
 ***
 
 ### Ether's Home Server
