@@ -1,63 +1,153 @@
-# Ether
-Ether Discord bot OpenAI toolkit
-## Supports 
-Most text generative models, DALL E 2, DALL E 3, GPT Visual, with option to change text generative endpoint
-## Filetype support 
-txt, doc, docx, odt, rtf, python, lua, epub, c, cpp, rust, nim, csv, excel, js, sh, ps1, css, php, html, conf, log, pcap, ocsf, xml, json, sql
-## Slash commands
-/ether, /manager, /openai-options, /chatbot-options, /sharing-options, /association-options, /terms
-## Administrative commands
-banuser, banguild, unban, list, setstatus, logout, leave
-## Will create / requires
-1. data & temp directories (for image and file processing)
-2. terms db, blacklist db (users who agree to terms, users or servers blocked from using bot)
-## Setup for Linux 
-*to use Windows substitute Linux libraries such as soffice, tshark*
-1. Install requirements listed below
-2. Add ID's in these places:
-   ```
-   Lines 78 - 87 admin id, guild id, roles, dev, notification channels
-   ```
-3. Change bot ID in these places (or search / replace using 1130638110196256828):
-   ```
-   366, 4351, 4366, 4509, 4619 + 4620, 4778, 5030, 5037
-   ```
-4. Add your bot token
-## Requirements
-**Apt** 
-```
-libreoffice (soffice) 
-tshark (pcap processing)
-python 3.10, pip3
-```
-**Pip3** 
-```
-discord-py-slash-command==2.3.2
-discord-py-slash-command==2.3.2
-discord-py-slash-command==2.3.2
-discord-py-slash-command==1.7
-discord.py==1.7
-langchain==0.0.148
-gpt_index==0.4.24
-docx==0.2.4
-python-docx
-openai==0.28.1
-beautifulsoup4
-ebooklib
-sqlparse
-pyshark
-pymupdf
-aiofiles
-python-magic
-feedparser
-pyshark
-sqlite3
-```
-## Gitbook knowledgebase
-https://ether-2.gitbook.io/ether/
-## Support server
-https://discord.com/invite/gSMNvfDGa2
-## Developer
-https://www.linkedin.com/in/nicholas-dustin-065560108/
+---
+description: OpenAI Toolkit known as the blue moon goddess (Discord Bot)
+---
 
+# 👋 Welcome to Ether
 
+Introduction
+
+> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord.&#x20;
+
+> Ether is amnesiac and does not collect or redistribute any user data other than its designated API calls between Discord and OpenAI. Coupled with robust security in the Google Cloud, Ether provides extreme performance, reliability, freedom, and security to members sessions.
+
+{% hint style="info" %}
+✅ Discord Verified
+
+✅ Secured in the Google Cloud
+{% endhint %}
+
+{% hint style="warning" %}
+Ether is a toolkit and does not provide access to any integrated OpenAI API keys. Users must provide their own OpenAI keys to use in Ether.
+{% endhint %}
+
+***
+
+### All OpenAI options and models in a single session
+
+> Ether works by initializing the user into a looped class instance with their own Discord listener and optional configurations or optional API call structures. All features, such as DALL E, or GPT Visual are just an attachment or keyword away from being accessed.&#x20;
+
+### Sharing sessions
+
+> Session authors can share access to their session. All session variables are shared, including the role and prompt. Users may have multiple individual and unique sessions in a single channel, or many users can have access to a single session that is being shared.
+
+### Powerful embeddings
+
+> Ether's engine for processing and embedding data into ChatGPT is consistently ahead of the competition. Ether's engine for embedding data is very unique, custom built from the ground up and refined multiple times. Ether can embed data very quickly and supports a range of file types with new file types being added regularly.
+
+### Have ChatGPT how you need it
+
+> Ether aims to always provide all of the possible API options and model options to the user. Coupled with chat bot configurations, users can create a session that is totally unique to them and their desired experience. Easily save and load your favorite sessions, or use one of the newly generated profiles.
+
+### Amnesiac approach & local variables
+
+> Ether uses an amnesiac approach in session handling, configurations, and data. Users can save their configurations and associations to file for later use which are sent to the user in direct message. Data given to Ether for embeddings is discarded after being embedded, and when a session is closed all variables are destroyed.&#x20;
+
+***
+
+### Configurations Index
+
+{% content-ref url="overview/basic-use.md" %}
+[basic-use.md](overview/basic-use.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/sharing-sessions.md" %}
+[sharing-sessions.md](overview/sharing-sessions.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/chatbot-configuration.md" %}
+[chatbot-configuration.md](overview/chatbot-configuration.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/openai-configuration.md" %}
+[openai-configuration.md](overview/openai-configuration.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/associations.md" %}
+[associations.md](overview/associations.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/embeddings.md" %}
+[embeddings.md](overview/embeddings.md)
+{% endcontent-ref %}
+
+{% content-ref url="overview/extending-sessions.md" %}
+[extending-sessions.md](overview/extending-sessions.md)
+{% endcontent-ref %}
+
+***
+
+### Terms, FAQ, Help
+
+{% content-ref url="terms-faq-help/ether-terms-and-privacy.md" %}
+[ether-terms-and-privacy.md](terms-faq-help/ether-terms-and-privacy.md)
+{% endcontent-ref %}
+
+{% content-ref url="terms-faq-help/faq.md" %}
+[faq.md](terms-faq-help/faq.md)
+{% endcontent-ref %}
+
+{% content-ref url="terms-faq-help/help.md" %}
+[help.md](terms-faq-help/help.md)
+{% endcontent-ref %}
+
+***
+
+### Changelogs & Bugs
+
+{% content-ref url="changelog-and-bugs/in-development.md" %}
+[in-development.md](changelog-and-bugs/in-development.md)
+{% endcontent-ref %}
+
+{% content-ref url="changelog-and-bugs/changelog.md" %}
+[changelog.md](changelog-and-bugs/changelog.md)
+{% endcontent-ref %}
+
+{% content-ref url="changelog-and-bugs/bugs.md" %}
+[bugs.md](changelog-and-bugs/bugs.md)
+{% endcontent-ref %}
+
+***
+
+### Ether's Home Server
+
+{% embed url="https://discord.com/invite/gSMNvfDGa2" %}
+
+### Ether on TopGG
+
+{% embed url="https://top.gg/bot/1130638110196256828" %}
+
+***
+
+{% hint style="info" %}
+See the developer on LinkedIn:\
+[https://www.linkedin.com/in/nicholas-dustin-065560108/](https://www.linkedin.com/in/nicholas-dustin-065560108/)
+{% endhint %}
+
+### Donate
+
+<details>
+
+<summary>Crypto</summary>
+
+*   BTC:
+
+    `bc1qs3yh2tvzwlsahp8qffdg2de5d4lr802psd3vml`
+*   LTC:
+
+    `ltc1qt39rvz3tr0y2302ry0alhyw5247gkqjhldquwc`
+*   DOGE:
+
+    `DNDqtrpgVijHHQW3B55rQwBebJLVJgyCK9`
+*   NANO:
+
+    `nano_1pyp9foepymxn3j4qfnoxqf4bditfpmzh9n4s6gwmqpk6ykezc46b81ujz5r`
+*   TRX:
+
+    `EQDBwAC954QB9O-LIhCK0swGQfk__VxOLc4VhExuuOCJaJca`
+*   MATIC:
+
+    `0xAb361EB97ad41310cB80a7d47dd8204Fcc5aCF21`
+
+</details>
+
+***
