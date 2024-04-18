@@ -1,8 +1,6 @@
 # 👋 Welcome to Ether
 
-> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord
-> All OpenAI options and models in a single session
-> Amnesiac approach & local variables
+> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
 ***
 ### Commands
  * /ether - view stats such as uptime, set schedule, and backlinks to OpenAI status
