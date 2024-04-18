@@ -25,6 +25,9 @@
 1. Requires Python3, pip3
 2. Some functionalities require: Libreoffice (specifically soffice package), Tshark (for pcap support)
 3. Install requirements from requirements.txt
+4. Alter lines 76-85 to contain your role, notification channel and server ID's
+5. Search and replace '1130638110196256828' (9 instances) - replace with your bot user ID
+6. Add your bot token
 ***
 
 ### Ether's Home Server
