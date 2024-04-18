@@ -1,7 +1,7 @@
 # Ether
 Ether Discord bot OpenAI toolkit
 ## Supports 
-Most text generative models, DALL E 2, DALL E 3, GPT Visual, with option to change endpoint
+Most text generative models, DALL E 2, DALL E 3, GPT Visual, with option to change text generative endpoint
 ## Filetype support 
 txt, doc, docx, odt, rtf, python, lua, epub, c, cpp, rust, nim, csv, excel, js, sh, ps1, css, php, html, conf, log, pcap, ocsf, xml, json, sql
 ## Slash commands
