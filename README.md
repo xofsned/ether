@@ -1,7 +1,13 @@
 # 👋 Welcome to Ether
 
 > Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
+
 ***
+### Models
+ * gpt-3.5-turbo, gpt-4, gpt-4-1106-preview, gpt-4-0613, gpt-4-0314, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo-16k, gpt-3.5-turbo-1106, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301
+ * DALL E 2, DALL E 3
+ * GPT Visual
+ * Optional: custom endpoints for using with utilities such as ML Studio
 ### Commands
  * /ether - view stats such as uptime, set schedule, and backlinks to OpenAI status
  * /terms - agree or revoke terms
