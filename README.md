@@ -28,10 +28,11 @@
 4. Alter lines 76-85 to contain your role, notification channel and server ID's
 5. Search and replace '1130638110196256828' (9 instances) - replace with your bot user ID
 6. Add your bot token
-***
 ### Additional Items
 1. Will generate databases - terms, blacklist
 2. requires temp & data directories for processing data
+***
+
 
 ### Ether's Home Server
 
