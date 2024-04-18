@@ -16,6 +16,14 @@
  * /chatbot-options - set the Discord chatbot options, e.g. context amount, context type, mention requirement, etc
  * /association-options - add, view, download or upload associations generated in Ether
  * /sharing-options - allow users or roles specific api access with time limits or iterative limits
+### Administrative Keyword Commands
+ * banuser - ban a user from using the bot
+ * banguild - ban a guild from using the bot
+ * unban - unban a user or guild from using bot
+ * list - list current bans
+ * setstatus - set the schedule object in /ether
+ * logout - command the bot to logout
+ * leave - command the bot to leave a server
 
 ### Primary Keywords
  * draw - generate an image
