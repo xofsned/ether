@@ -1,7 +1,4 @@
 discord-py-slash-command==2.3.2
-discord-py-slash-command==2.3.2
-discord-py-slash-command==2.3.2
-discord-py-slash-command==1.7
 discord.py==1.7
 langchain==0.0.148
 gpt_index==0.4.24
