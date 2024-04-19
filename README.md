@@ -2,7 +2,7 @@
 
 > Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
  * See: https://ether-2.gitbook.io/ether
-**Please note concerning Langchain version**
+### **Please note concerning Langchain version**
  * Ether needs to be updated for new Langchain versions
  * Does not use exec(), eval(), shlex(), php, system sql, subclasses, or other vectors for Langchain exploits
  * Does not evaluate files such as CSV
