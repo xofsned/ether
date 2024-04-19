@@ -2,9 +2,11 @@
 
 > Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
  * See: https://ether-2.gitbook.io/ether
-> Please note concerning Langchain version
+**Please note concerning Langchain version**
  * Ether needs to be updated for new Langchain versions
  * Does not use exec(), eval(), shlex(), php, system sql, subclasses, or other vectors for Langchain exploits
+ * Does not evaluate files such as CSV
+ * Only imports OpenChatAI from Langchain, which does not execute strings - passes them as values
 ***
 ### Model Support
  * gpt-3.5-turbo, gpt-4, gpt-4-1106-preview, gpt-4-0613, gpt-4-0314, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo-16k, gpt-3.5-turbo-1106, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301
