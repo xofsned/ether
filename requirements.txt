@@ -13,5 +13,4 @@ pymupdf
 aiofiles
 python-magic
 feedparser
-pyshark
 sqlite3
