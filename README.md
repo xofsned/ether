@@ -11,7 +11,7 @@
  * gpt-3.5-turbo, gpt-4, gpt-4-1106-preview, gpt-4-0613, gpt-4-0314, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo-16k, gpt-3.5-turbo-1106, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301
  * DALL E 2, DALL E 3
  * GPT Visual
- * Optional: custom endpoints for using with utilities such as ML Studio
+ * Optional: custom endpoints for using with utilities such as LM Studio
    
 ### Filetype Support
 *txt, doc, docx, odt, rtf, python, lua, epub, c, cpp, rust, nim, csv, excel, js, sh, ps1, css, php, html, conf, log, pcap, ocsf, xml, json, sql*
