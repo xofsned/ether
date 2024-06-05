@@ -54,7 +54,7 @@
 
 ### Ether's Home Server
 
-https://discord.com/invite/gSMNvfDGa2
+https://discord.gg/z3S7CUB3QS
 
 ### Ether on TopGG
 
