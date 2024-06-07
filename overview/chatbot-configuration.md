@@ -75,7 +75,7 @@ Options:
 
 <summary>No mention</summary>
 
-&#x20;_`/chatbot-options [ no_mention ] [ option ]`_
+_`/chatbot-options [ no_mention ] [ option ]`_
 
 Enable or disable the requirement to mention the bot in discussion
 
@@ -83,6 +83,18 @@ Options:
 
 * `enabled`
 * `disabled`
+
+</details>
+
+<details>
+
+<summary>Ignore users</summary>
+
+_`/chatbot-options [ ignore_users ] [ option ]`_
+
+Enables a requirement for Discord users to use bot mention while no\_mention option is also enabled. This feature allows users to have chat among b2b chat without interrupting or prompting the bots.&#x20;
+
+In other words, this override allows for the no\_mention feature to only be applied to other bots when using the /advanced-options and b2b chat utilities.
 
 </details>
 
