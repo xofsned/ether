@@ -22,6 +22,7 @@
  * /chatbot-options - set the Discord chatbot options, e.g. context amount, context type, mention requirement, etc
  * /association-options - add, view, download or upload associations generated in Ether
  * /sharing-options - allow users or roles specific api access with time limits or iterative limits
+ * /advanced-options - initialize bot-to-bot (gpt-to-gpt) chat with logging utilities for generating data
    
 ### Administrative Keyword Commands
  * banuser - ban a user from using the bot
