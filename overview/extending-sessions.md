@@ -18,7 +18,17 @@ A session's configuration cannot be altered inside a channel that is the extensi
 
 <details>
 
-<summary>Extend</summary>
+<summary>View extensions</summary>
+
+_`/manager [ session_management ] [ view_extensions ]`_
+
+When invoked in the primary session channel, Ether will display the extensions associated with that session.
+
+</details>
+
+<details>
+
+<summary>Extend to single channel</summary>
 
 _`/manager [ extend ] [ session number ]`_
 
@@ -30,6 +40,21 @@ Logic:
 * Invoked in an extended channel with the source session number removes the extension
 * When invoking in an extended channel with a different source session number, the extension is migrated from one session to the other
 * Session configurations can only be done in the source session channel, and not in extensions
+
+</details>
+
+<details>
+
+<summary>Extending through all channels</summary>
+
+_`/manager [ utilities ] [ extend-all-channels ]`_
+
+When invoked in the session channel, Ether generates extensions into every channel in the server for the session.
+
+Logic & limits:
+
+* Skips channels other sessions are actively shared in
+* Must be invoked in the primary channel for the session
 
 </details>
 
