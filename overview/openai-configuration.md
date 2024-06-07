@@ -34,11 +34,46 @@ Ether uses API options provided by OpenAI. Any limitations, constraints, or vali
 
 <details>
 
+<summary>API base, endpoint selection</summary>
+
+_`/openai-options [ api_base ] [ endpoint ]`_
+
+* The endpoint address for the OpenAI API call to be sent to
+
+_`/openai-options [ model ] [ custom-model ]`_
+
+* Changes the API route and API call structure from OpenAI to others, like LM Studio
+
+_`/openai-options [ custom_model_name ] [ name ]`_
+
+* The name of the model to be used in the custom endpoint
+
+When configured, Ether can access other OpenAI based enpoints, such as a server instance of LM Studio.&#x20;
+
+To restore defualts:
+
+* set endpoint to 'default'
+* set model to an OpenAI model
+
+</details>
+
+<details>
+
 <summary>Add a prompt</summary>
 
 _`/openai-options [ add_prompt ] [ new prompt ]`_
 
 Give the session a prompt to be used by the author and any members accessing the session as a shared session.&#x20;
+
+</details>
+
+<details>
+
+<summary>User prompt</summary>
+
+_`/openai-options [ user_prompt ] [ prompt ]`_
+
+Give a user their own prompt to be used when they message the bot.
 
 </details>
 
@@ -69,6 +104,7 @@ Options:
 
 * `gpt-3.5-turbo`&#x20;
 * `gpt-4`&#x20;
+* `gpt-4o`&#x20;
 * `gpt-4-1106-preview`
 * `gpt-4-0613`
 * `gpt-4-0314`
@@ -143,12 +179,22 @@ Options:
 
 _`/openai-options [ role ] [ option ]`_
 
-Selects the role to give ChatGPT (OpenAI Role)
+Selects the role to be applied to messages.
 
 Options:
 
 * `user`
 * `system`
+
+</details>
+
+<details>
+
+<summary>User role</summary>
+
+_`/openai-options [ user_role ] [ option ]`_
+
+Gives a user a specific role to be coupled with their messages when they message the bot.&#x20;
 
 </details>
 
