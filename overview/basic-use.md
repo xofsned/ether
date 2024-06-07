@@ -44,7 +44,17 @@ Initialize a new session in the channel the command is being invoked in, Ether w
 
 _`/manager [ session_management ] [ view_sessions ]`_
 
-View all of your active sessions and their respective extensions, source channel, unique name, and session number.
+View all of your active sessions&#x20;
+
+</details>
+
+<details>
+
+<summary>View extensions</summary>
+
+_`/manager [ session_management ] [ view_extensions ]`_
+
+View all extensions for a specific session.
 
 </details>
 
@@ -119,6 +129,11 @@ Extends a session into an additional channel. First obtain the number for the se
 <summary>Utilities</summary>
 
 `/manager [ utilities ]`
+
+* extend\_all\_channels
+  * extends a session into all channels of the server, skipping channels where other pre-existing _shared sessions_ are active
+
+<!---->
 
 * keep\_alive
   * enables sending dummy request every 6 hours to llmpredictor when having active embeddings
