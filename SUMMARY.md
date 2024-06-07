@@ -11,6 +11,7 @@
 * [🪝 Associations](overview/associations.md)
 * [📩 Embeddings](overview/embeddings.md)
 * [⛓️ Extending Sessions](overview/extending-sessions.md)
+* [⛓️ Advanced Options](overview/extending-sessions-1.md)
 
 ## Terms - FAQ - Help
 
