@@ -61,30 +61,6 @@ https://discord.gg/z3S7CUB3QS
 
 https://top.gg/bot/1130638110196256828
 
-### The Developer
-
-https://www.linkedin.com/in/nicholas-dustin-065560108/
-***
-
-### Donate
-
-<details>
-
-<summary>Crypto</summary>
-
-*   BTC:
-    `bc1qs3yh2tvzwlsahp8qffdg2de5d4lr802psd3vml`
-*   LTC:
-    `ltc1qt39rvz3tr0y2302ry0alhyw5247gkqjhldquwc`
-*   DOGE:
-    `DNDqtrpgVijHHQW3B55rQwBebJLVJgyCK9`
-*   NANO:
-    `nano_1pyp9foepymxn3j4qfnoxqf4bditfpmzh9n4s6gwmqpk6ykezc46b81ujz5r`
-*   TRX:
-    `EQDBwAC954QB9O-LIhCK0swGQfk__VxOLc4VhExuuOCJaJca`
-*   MATIC:
-    `0xAb361EB97ad41310cB80a7d47dd8204Fcc5aCF21`
-
 </details>
 
 ***
