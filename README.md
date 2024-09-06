@@ -2,11 +2,9 @@
 
 > Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
  * See: https://ether-2.gitbook.io/ether
-### Model Support
- * gpt-3.5-turbo, gpt-4, gpt-4o, gpt-4-1106-preview, gpt-4-0613, gpt-4-0314, gpt-3.5-turbo-16k-0613, gpt-3.5-turbo-16k, gpt-3.5-turbo-1106, gpt-3.5-turbo-0613, gpt-3.5-turbo-0301
- * DALL E 2, DALL E 3
- * GPT Visual
- * Optional: custom endpoints for using with utilities such as LM Studio
+### AI Support
+ * OpenAI Models
+ * LM Studio Text Generative Models
    
 ### Filetype Support
 *txt, doc, docx, odt, rtf, python, lua, epub, c, cpp, rust, nim, csv, excel, js, sh, ps1, css, php, html, conf, log, pcap, ocsf, xml, json, sql*
@@ -20,7 +18,8 @@
  * /manager - manage, view, create, stop sessions
  * /openai-options - set the OpenAI options, e.g. model, temperature, tokens, prompt, role, etc
  * /chatbot-options - set the Discord chatbot options, e.g. context amount, context type, mention requirement, etc
- * /association-options - add, view, download or upload associations generated in Ether
+ * /lmstudio-options
+ * /b2b-options - add, view, download or upload associations generated in Ether
  * /sharing-options - allow users or roles specific api access with time limits or iterative limits
  * /advanced-options - initialize bot-to-bot (gpt-to-gpt) chat with logging utilities for generating data
    
@@ -32,6 +31,7 @@
  * setstatus - set the schedule object in /ether
  * logout - command the bot to logout
  * leave - command the bot to leave a server
+ * - Also adjust new built in chat (EthersSession class)
 
 ### Primary Keywords
  * draw - generate an image
