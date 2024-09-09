@@ -1,9 +1,9 @@
 # 👋 Welcome to Ether
 
-> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI experience in Discord using an amnesiac approach
+> Ether is an OpenAI toolkit that aims to give users the power to configure their OpenAI or LM Studio experience in Discord using an amnesiac approach
  * See: https://ether-2.gitbook.io/ether
 ### AI Support
- * OpenAI Models
+ * OpenAI Models - chat, visual, DALL E (2 & 3) and embeddings
  * LM Studio Text Generative Models
    
 ### Filetype Support
