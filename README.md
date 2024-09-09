@@ -12,16 +12,25 @@
 ### Visual Support
 *jpg, jpeg, png, webp*
 
+### Additional Features
+- Save and load sessions by JSON
+- Create, save, and load associations
+- Generate unique access with options such as per channel, per role, or per user access
+- Give users unique prompts and the ability to have segmented context 
+- Options for context compilation and formatting
+- Options for bot-to-bot chat
+- Session management utilities for starting, stopping, or extending sessions
+- Class for built-in AI use (outside of user sessions)
+
 ### Commands
  * /ether - view stats such as uptime, set schedule, and backlinks to OpenAI status
  * /terms - agree or revoke terms
  * /manager - manage, view, create, stop sessions
  * /openai-options - set the OpenAI options, e.g. model, temperature, tokens, prompt, role, etc
  * /chatbot-options - set the Discord chatbot options, e.g. context amount, context type, mention requirement, etc
- * /lmstudio-options
+ * /lmstudio-options - configure for LM Studio endpoint
  * /b2b-options - add, view, download or upload associations generated in Ether
  * /sharing-options - allow users or roles specific api access with time limits or iterative limits
- * /advanced-options - initialize bot-to-bot (gpt-to-gpt) chat with logging utilities for generating data
    
 ### Administrative Keyword Commands
  * banuser - ban a user from using the bot
