@@ -53,6 +53,8 @@ Types:
   * Combines all context as one block of text, wrapped in the role and prompt
 * Segmented
   * Collects only the message author messages in context
+* Alternating
+  * Alternating context attempts to construct the context for LM Studio alternating context API call structure
 
 </details>
 
@@ -95,58 +97,5 @@ _`/chatbot-options [ ignore_users ] [ option ]`_
 Enables a requirement for Discord users to use bot mention while no\_mention option is also enabled. This feature allows users to have chat among b2b chat without interrupting or prompting the bots.&#x20;
 
 In other words, this override allows for the no\_mention feature to only be applied to other bots when using the /advanced-options and b2b chat utilities.
-
-</details>
-
-<details>
-
-<summary>Advanced image</summary>
-
-_`*coming soon*`_
-
-&#x20;_`/chatbot-options [ advanced_image ] [ option ]`_
-
-Enable or disable returning image generations in an embed with action buttons
-
-Options:
-
-* `enable`
-* `disable`
-
-</details>
-
-<details>
-
-<summary>Advanced mode</summary>
-
-_`*coming soon*`_
-
-&#x20;_`/chatbot-options [ advanced_mode ] [ option ]`_
-
-Enable or disable static reacts or buttons to be sent with AI responses for bookmarking or generating upvote and downvote logs
-
-Options:
-
-* `enabled`
-* `disabled`
-
-</details>
-
-<details>
-
-<summary>Custom Keywords</summary>
-
-_`*coming soon*`_
-
-&#x20;_`/chatbot-options [ custom_keywords ] [ option ]`_
-
-Create custom keywords to replace the default keywords
-
-Options:
-
-* `view`
-* `clear`
-* `add`
-* `change`
 
 </details>
