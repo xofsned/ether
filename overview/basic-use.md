@@ -116,11 +116,17 @@ Give a session a unique name that will be displayed for you when viewing session
 
 <details>
 
-<summary>Extend a session</summary>
+<summary>Extension Utilities</summary>
 
-`/manager [ extend_session ]`
+`/manager [ extension_options ] [ option ]`
 
-Extends a session into an additional channel. First obtain the number for the session to extend either in session config or by viewing all sessions, then in new channel use extend session command with the session number to extend
+Extends a session into an additional channel.&#x20;
+
+#### Options:
+
+* Extend this session into all guild channels (forks session outward)
+* \*Extend (num) session here\*\
+  Invoked in a channel outside of the session, extends the selected session into the active channel
 
 </details>
 
@@ -130,15 +136,20 @@ Extends a session into an additional channel. First obtain the number for the se
 
 `/manager [ utilities ]`
 
-* extend\_all\_channels
-  * extends a session into all channels of the server, skipping channels where other pre-existing _shared sessions_ are active
-
-<!---->
-
 * keep\_alive
   * enables sending dummy request every 6 hours to llmpredictor when having active embeddings
 * jump\_listener
   * is designed to execute the session listener object in the event a Discord outage has de-registered bot listeners, while the user still has active sessions
+
+</details>
+
+<details>
+
+<summary>API Base</summary>
+
+`/manager [ api_base ] [ OpenAI / LMStudio ]`
+
+* Sets the desired API base. When set to OpenAI - all outgoing requests are sent through OpenAI API call structures to OpenAI's endpoints. When set to LM Studio - all outgoing requests are sent through LM Studio API call structure and custom endpoints applied by the user.
 
 </details>
 
