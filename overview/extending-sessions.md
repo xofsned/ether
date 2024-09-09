@@ -30,7 +30,7 @@ When invoked in the primary session channel, Ether will display the extensions a
 
 <summary>Extend to single channel</summary>
 
-_`/manager [ extend ] [ session number ]`_
+_`/manager [ extension-utilities ] [ extend session # here ]`_
 
 When invoked in a channel outside of an active session channel with a selected session number, the session is extended into the additional channel.
 
@@ -47,7 +47,7 @@ Logic:
 
 <summary>Extending through all channels</summary>
 
-_`/manager [ utilities ] [ extend-all-channels ]`_
+_`/manager [ extension-utilities ] [ extend this session all channels ]`_
 
 When invoked in the session channel, Ether generates extensions into every channel in the server for the session.
 
