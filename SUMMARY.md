@@ -8,6 +8,7 @@
 * [🙋‍♂️ Sharing Sessions](overview/sharing-sessions.md)
 * [⚙️ Chatbot Configuration](overview/chatbot-configuration.md)
 * [⚙️ OpenAI Configuration](overview/openai-configuration.md)
+* [⚙️ LM Studio Configuration](overview/openai-configuration-1.md)
 * [🪝 Associations](overview/associations.md)
 * [📩 Embeddings](overview/embeddings.md)
 * [⛓️ Extending Sessions](overview/extending-sessions.md)
