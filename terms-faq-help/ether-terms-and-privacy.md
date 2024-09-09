@@ -34,7 +34,7 @@ description: By using Ether you agree to and acknowledge the subjects below
 
 ### Ether's Built-in AI Chat
 
-> Ether's built-in chat is hosted and supported by Ether's developer. No Discord user information is generated, collected, or redistributed. No additional information is stored or needed for this service. Ether will respond to any user who does not have a session and in channels where there are no shared sessions - by ping or reply only (user requested interaction).
+> Ether's built-in chat is hosted and supported by Ether's developer using AI models from HuggingFace. No Discord user information is generated, collected, or redistributed. No additional information is stored or needed for this service. Ether will respond to any user who does not have a session and in channels where there are no shared sessions - by ping or reply only (user requested interaction).
 >
 > Ether parses API requests to LM Studio through a domain web server service hosting TLS and certificates, with an API endpoint protected by firewalls and security protocols as is the bot itself on the Google cloud.
 >
