@@ -181,6 +181,10 @@ Whenever supplying Ether with an API key, or requesting to save or load a sessio
 
 > @ether _**draw**_, @ether _**variate**_, @ether _**embed**_, @ether _**set**_, @ether _**exit**_
 
+{% hint style="info" %}
+Currently, Ether's keywords only work with OpenAI API endpoints and as OpenAI set as the API Base in /manager \[ api\_base ]
+{% endhint %}
+
 {% tabs %}
 {% tab title="Draw" %}
 _`@ether draw`_
