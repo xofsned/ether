@@ -1,10 +1,8 @@
 ---
-description: Configure your ChatGPT experience
+description: Configure your LM Studio experience
 ---
 
 # ⚙️ LM Studio Configuration
-
-Ether uses API options provided by OpenAI. Any limitations, constraints, or validations are solely for the operability and compliance of Ether with OpenAI's API.&#x20;
 
 ***
 
