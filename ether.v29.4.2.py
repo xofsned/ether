@@ -1,7 +1,6 @@
 """
 Written by Ned
-Edition: v29.4.2, 9.7.2024   
-replace all instances of 1130638110196256828 with your bot id       
+Edition: v29.4, 9.21.2024          
 """
 
 # discord libraries [>
@@ -938,6 +937,7 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                             "segmented_context": session.segmented_context,
                                             "stacked_context": session.stacked_context,
                                             "combined_context": session.combined_context,
+                                            "alternating_context": session.alternating_context,
                                             # new ----->>
                                             "session_channels": session.server_share,
                                             "api_base": session.api_base,
@@ -1012,6 +1012,7 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                             session.segmented_context = session_variables.get("segmented_context")
                                             session.stacked_context = session_variables.get("stacked_context")
                                             session.combined_context = session_variables.get("combined_context")
+                                            session.alternating_context = session_variables.get("alternating_context")
 
                                             session_channels = session_variables.get("session_channels", [])
 
@@ -1099,7 +1100,6 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                     session.stacked_context = "False"
                                     session.combined_context = "True"
                                     session.api_base = "OpenAI"
-                                    session.api_base = session.api_base_default
                                     session.associations_share = []
                                     session.associations = {}
                                     session.role_share = {}
@@ -1327,7 +1327,8 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                         print(f"Error displaying stats card: {e}")
                                 asyncio.create_task(get_stats_task(ctx, session))
                                 return
-                         
+
+
                         if utilities is not None:
 
                             if utilities == "keep-alive":
@@ -1360,7 +1361,7 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                         print(f"Error exiting: {e}")
                                 asyncio.create_task(jump_listener())
                                 return
-                            
+                       
                         if extension_utilities is not None:
 
                             if extension_utilities == "extend-all-channels":
@@ -1407,8 +1408,10 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                     
                                 asyncio.create_task(dispatch_session(shared_sessions))
                                 return
+                            
+                            return
                        
-                        return  
+                              
         # This code checks keys by author and extended channels to remove extensions as override new session
         # This works by allowing user to create session, overriding their own extension
         # Extended channels are added to global shares as shared sessions
@@ -1456,7 +1459,7 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                                     embed = Embed(title="❌  Another session is being shared in this channel", description="To use your own session in this channel, initialize a new session in this channel (extensions not allowed into other shared channels)", color=0x0000FF)
                                                     await ctx.send(embed=embed, hidden=True)
                                                     return
-                                                
+
                                             for session in active_sessions.values():
                                                 if ctx.channel.id in session.server_share:
                                                     session.server_share.remove(ctx.channel.id)
@@ -1496,7 +1499,6 @@ async def manager(ctx, session_management=None, session_name=None, extend_sessio
                                             return
                                 else:
                                     print("Error in assigning Role variable")
-                                
 
                             asyncio.create_task(extend_session())
                             return
@@ -2264,6 +2266,7 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
 
     author_id = ctx.author.id    
     channel = ctx.channel
+    dm_channel = await ctx.author.create_dm()
 
     with active_sessions_fetch_lock:
         if any(session.channel_id == channel.id and session.author_id == author_id for session in active_sessions.values()):
@@ -2366,9 +2369,9 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
                                     embed.set_footer(text="If you do not receive the message, please check that you have direct messages from server members enabled in your Discord settings.")
                                     message = await ctx.send(embed=embed, hidden=True)
 
-                                async def select_api_key():
+                                async def select_api_key(dm_channel):
                                     
-                                    dm_channel = await ctx.author.create_dm()
+                                    
                                     channel_link = f'[direct messages](https://discord.com/channels/@me/{dm_channel.id})'
 
                                     while True:
@@ -2402,6 +2405,7 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
                                             api_key = key_message.content.strip()
                                             openai.api_key = api_key
                                             is_valid_key = None
+                                            error_embed = None
 
                                             try:
                                                 loop = asyncio.get_event_loop()
@@ -2423,16 +2427,34 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
                                                 else:
                                                     is_valid_key = False
 
-                                            except openai.error.AuthenticationError:
+                                            except openai.error.AuthenticationError as e:
                                                 is_valid_key = False
+                                                error_embed = discord.Embed(
+                                                    title="Authentication Error",
+                                                    description=f"An authentication error occurred...\n**Log:**\n`{e}`",
+                                                    color=0xFF0000
+                                                )
+                                                await dm_channel.send(embed=error_embed)
                                             except openai.error.APIError as e:
                                                 is_valid_key = False
+                                                error_embed = discord.Embed(
+                                                    title="API Error",
+                                                    description=f"An API error occurred: {e}",
+                                                    color=0xFF0000
+                                                )
+                                                await dm_channel.send(embed=error_embed)
                                             except asyncio.TimeoutError:
                                                 is_valid_key = False
+                                                error_embed = discord.Embed(
+                                                    title="Timeout Error",
+                                                    description="The request timed out.",
+                                                    color=0xFF0000
+                                                )
+                                                await dm_channel.send(embed=error_embed)
 
                                             if is_valid_key == False:
                                                 embed.title = "❌  Key Error\n\n"
-                                                embed.description = "The key is either invalid, max quota, or there was an error communicating with OpenAI.\n\nTry your key again, or try a different key.\n\nOpenAI [Account](https://platform.openai.com/account/org-settings)\nEther's [Support Server](https://discord.gg/cc3fX93Nvu)."
+                                                embed.description = f"The key is either invalid, max quota, or there was an error communicating with OpenAI.\n\nTry your key again, or try a different key.\n\nOpenAI [Account](https://platform.openai.com/account/org-settings)\nEther's [Support Server](https://discord.gg/cc3fX93Nvu)."
                                                 embed.color = 0xFFA500
                                                 await message.edit(embed=embed)
                                                 continue
@@ -2453,7 +2475,7 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
                                             await message.edit(embed=embed)
                                             return None
                                         
-                                asyncio.create_task(select_api_key())
+                                asyncio.create_task(select_api_key(dm_channel))
                                 return
                             
                             if manage_api_key == "clear":
@@ -2512,7 +2534,7 @@ async def openai_config(ctx, add_prompt=None, manage_prompt=None, user_prompt=No
                             async def set_model():
                                 try:
                                     session.model = model
-                                        
+                                       
                                 except Exception as e:
                                     embed = Embed(title="Model Error", description="", color=0x0000FF)
                                     await ctx.send(embed=embed, hidden=True)
@@ -4332,6 +4354,19 @@ async def advanced_options(ctx, bot_share=None, bot_share_delay=None, chat_logge
                                     embed = Embed(title="❌  Logger Error", description="", color=0x0000FF)
                                     await ctx.send(embed=embed, hidden=True)
                             asyncio.create_task(set_logger_task())
+
+                        if return_ping is not None:
+                            async def set_return_ping_task():
+                                try:
+                                    if return_ping == "True":
+                                        session.return_ping = True
+                                    else:
+                                        session.return_ping = False
+                               
+                                except Exception as e:
+                                    embed = Embed(title="❌  Return Ping Error", description="", color=0x0000FF)
+                                    await ctx.send(embed=embed, hidden=True)
+                            asyncio.create_task(set_return_ping_task())
                             
                         if bot_share is not None:
                             async def set_bot_share():
@@ -4353,19 +4388,6 @@ async def advanced_options(ctx, bot_share=None, bot_share_delay=None, chat_logge
                                     embed = Embed(title="❌  Delay Set Error", description="", color=0x0000FF)
                                     await ctx.send(embed=embed, hidden=True)
                             asyncio.create_task(set_bot_delay())
-
-                        if return_ping is not None:
-                            async def set_return_ping_task():
-                                try:
-                                    if return_ping == "True":
-                                        session.return_ping = True
-                                    else:
-                                        session.return_ping = False
-                               
-                                except Exception as e:
-                                    embed = Embed(title="❌  Return Ping Error", description="", color=0x0000FF)
-                                    await ctx.send(embed=embed, hidden=True)
-                            asyncio.create_task(set_return_ping_task())
 
                         combined_objects = None
                         options = {
@@ -4773,6 +4795,7 @@ class EthersSession:
             self.bot = bot
             global ether_temperature, ether_model, ether_tokens, ether_contextLength, ether_api_base, ether_heartbeat, ether_user_message_counts, ether_lock, ether_prompt
             self.initialized = True   
+            self.KEYWORDS = ['setstatus', 'set']
 
     async def ether_lives(self):
         while self.initialized:
@@ -4780,94 +4803,105 @@ class EthersSession:
 
             if ether_heartbeat == False:
                 continue
+
+            hello_channel_id = message.channel.id
+            user_id = message.author.id
+            author_id = message.author.id
+
             
-            async def hello_ether():
-
-                if self.bot.user.mentioned_in(message):
-                    content_without_mention = message.content.replace(f'<@{self.bot.user.id}>', '').strip()
-                    if content_without_mention.startswith('setstatus') and message.author.id == 775445008672489525:
-                        return
-            
-                if message.author == self.bot.user:
-                    return
-
-                if message.type == discord.MessageType.pins_add:
-                    return
-
-                if not (self.bot.user.mentioned_in(message) or message.reference and message.reference.resolved and message.reference.resolved.author == self.bot.user):
-                    return
-                is_blacklisted = False
-                author_id = message.author.id
-                with blacklist_lock:
-                    for blacklisted_user_id in blacklist_dict["user_ids"]:
-                        if int(blacklisted_user_id) == author_id:
-                            is_blacklisted = True
-                            break
-
-                if is_blacklisted:
-                    return
-                            
-                user_id = message.author.id
-                too_many_tasks = False
-
-                with ether_lock:
-                    if ether_user_message_counts[user_id][0] >= 1:
-                        too_many_tasks = True
-                        ether_user_message_counts[user_id][1] += 1  
-                    else:
-                        ether_user_message_counts[user_id][0] += 1
-
-                if too_many_tasks:
-                    return
-
+            async def hello_ether(message, hello_channel_id, user_id, author_id):
                 try:
+                    if self.bot.user.mentioned_in(message):
+                        content_without_mention = message.content.replace(f'<@{self.bot.user.id}>', '').strip()
+                        if any(content_without_mention.startswith(keyword) for keyword in self.KEYWORDS) and message.author.id == 775445008672489525:
+                            return
+                        
+                    if isinstance(message.channel, discord.DMChannel):
+                        return
                     
+                    if message.author == self.bot.user:
+                        return
+
+                    if message.type == discord.MessageType.pins_add:
+                        return
+
+                    if not (self.bot.user.mentioned_in(message) or message.reference and message.reference.resolved and message.reference.resolved.author == self.bot.user):
+                        return
+
+                    is_blacklisted = False
+                    author_id = message.author.id
+                    with blacklist_lock:
+                        for blacklisted_user_id in blacklist_dict["user_ids"]:
+                            if int(blacklisted_user_id) == author_id:
+                                is_blacklisted = True
+                                break
+
+                    if is_blacklisted:
+                        return
+                            
+                    user_id = message.author.id
+                    too_many_tasks = False
+
+                    with ether_lock:
+                        if ether_user_message_counts[user_id][0] >= 1:
+                            too_many_tasks = True
+                            ether_user_message_counts[user_id][1] += 1  
+                        else:
+                            ether_user_message_counts[user_id][0] += 1
+
+                    if too_many_tasks:
+                        return
+
                     has_session = None
                     async with user_sessions_lock:
                         has_session = any(
-                            key.split("-")[0] == str(message.author.id) and key.split("-")[2] == str(message.channel.id)
+                            key.split("-")[0] == str(message.author.id) and key.split("-")[2] == str(hello_channel_id)
                             for key in user_sessions.keys()
+                        )
+
+                        user_session_list = [
+                            session for key, sessions in user_sessions.items()
+                            for session in sessions if key.startswith(f"{message.author.id}-")
+                        ]
+
+                        has_extended_session = any(
+                            hello_channel_id in session.server_share for session in user_session_list
                         )
 
                     shared_session = None
                     async with ether_lives_lock:
-                        shared_session = message.channel.id in shared_sessions
+                        shared_session = hello_channel_id in shared_sessions
 
-                    if not has_session and not shared_session:
+                    if not has_session and not has_extended_session and not shared_session:
                         ether_conversationLog = []
                         previous_messages = []
 
-                        await message.channel.trigger_typing()
+                        await self.bot.get_channel(hello_channel_id).trigger_typing()
 
-                        # Initialize the conversation log with the system prompt
                         ether_conversationLog = [ether_prompt]
 
-                        # Fetch the last 10 messages from the channel history
-                        async for msg in message.channel.history(limit=6):
-                            role = "assistant" if msg.author.id == 1130638110196256828 else "user"
-                            if msg.content.strip():  # Ensure the message content is not empty
-                                content = msg.content.replace(f'<@{1130638110196256828}>', '').strip()
+                        async for msg in self.bot.get_channel(hello_channel_id).history(limit=10):
+                            role = "assistant" if msg.author.id == self.bot.user.id else "user"
+                            if msg.content.strip():
+                                content = msg.content.replace(f'<@{self.bot.user.id}>', '').strip()
                                 ether_conversationLog.append({"role": role, "content": content})
 
-                        # Reverse the order to maintain the correct sequence
                         ether_conversationLog.reverse()
 
-                        # Append the current message to the conversation log
-                        if message.content.strip():  # Ensure the current message content is not empty
-                            content = message.content.replace(f'<@{1130638110196256828}>', '').strip()
+                        if message.content.strip():
+                            content = message.content.replace(f'<@{self.bot.user.id}>', '').strip()
                             ether_conversationLog.append({
                                 "role": "user",
                                 "content": content
                             })
 
-                        # Combine consecutive messages of the same role
-                        def combine_consecutive_messages(ether_conversationLog):
+                        def combine_consecutive_user_messages(ether_conversationLog):
                             combined_log = []
                             current_role = None
                             current_content = []
 
                             for msg in ether_conversationLog:
-                                if msg["role"] == current_role:
+                                if msg["role"] == current_role and current_role == "user":
                                     current_content.append(msg["content"])
                                 else:
                                     if current_role is not None:
@@ -4880,29 +4914,18 @@ class EthersSession:
 
                             return combined_log
 
-                        ether_conversationLog = combine_consecutive_messages(ether_conversationLog)
+                        ether_conversationLog = combine_consecutive_user_messages(ether_conversationLog)
 
-                        # Ensure the log starts with a user message after the system message
-                        def ensure_user_after_system(ether_conversationLog):
-                            if len(ether_conversationLog) > 1 and ether_conversationLog[1]["role"] != "user":
-                                ether_conversationLog.pop(1)
-                            return ether_conversationLog
-
-                        ether_conversationLog = ensure_user_after_system(ether_conversationLog)
-
-                        # Ensure the roles alternate correctly
                         def ensure_alternating_roles(ether_conversationLog):
-                            fixed_log = [ether_conversationLog[0]]  # Start with the system message
+                            fixed_log = [ether_conversationLog[0]]
                             for i in range(1, len(ether_conversationLog)):
                                 if fixed_log[-1]["role"] != ether_conversationLog[i]["role"]:
                                     fixed_log.append(ether_conversationLog[i])
                                 else:
-                                    # If the roles are the same, add a default assistant message
                                     if fixed_log[-1]["role"] == "user":
                                         fixed_log.append({"role": "assistant", "content": "Hello!"})
                                     fixed_log.append(ether_conversationLog[i])
 
-                            # Ensure the log ends with a user message
                             if fixed_log[-1]["role"] != "user":
                                 fixed_log.append({"role": "user", "content": message.content.strip()})
 
@@ -4910,14 +4933,11 @@ class EthersSession:
 
                         ether_conversationLog = ensure_alternating_roles(ether_conversationLog)
 
-                        # Ensure the system prompt is always included only once at the beginning
                         if ether_conversationLog[0]["role"] != "system":
                             ether_conversationLog.insert(0, ether_prompt)
 
-                        # Remove any additional system messages
                         ether_conversationLog = [msg for i, msg in enumerate(ether_conversationLog) if not (msg["role"] == "system" and i != 0)]
 
-                        # Ensure the log starts with a user message after the system message
                         if len(ether_conversationLog) > 1 and ether_conversationLog[1]["role"] != "user":
                             ether_conversationLog.pop(1)
 
@@ -4935,17 +4955,16 @@ class EthersSession:
                                     ether_api_base,
                                     headers={"Content-Type": "application/json"},
                                     json=data,
-                                    timeout=aiohttp.ClientTimeout(total=30)
+                                    timeout=aiohttp.ClientTimeout(total=60)
                                 ) as response:
                                     result = await response.text()
                                     response_json = json.loads(result)
                                     chatbot_response = response_json['choices'][0]['message']['content']
                             except aiohttp.ClientError as e:
-                                print(f"HTTP request failed: {e}")
-                                await message.channel.send("Error calling API.")
+                                await self.bot.get_channel(hello_channel_id).send("Error calling API.")
                                 return
                             except json.JSONDecodeError:
-                                await message.channel.send("Error decoding API response.")
+                                await self.bot.get_channel(hello_channel_id).send("Error decoding API response.")
                                 return
 
                         if not chatbot_response:
@@ -4954,7 +4973,6 @@ class EthersSession:
                         infractions = ether_user_message_counts[user_id][1]
 
                         if len(chatbot_response) > 2000:
-
                             chunks = []
                             while len(chatbot_response) > 2000:
                                 last_period_index = chatbot_response[:2000].rfind(".")
@@ -4973,17 +4991,25 @@ class EthersSession:
                             for i, chunk in enumerate(chunks):
                                 if i == len(chunks) - 1 and infractions > 0:
                                     chunk = f"{chunk}\n\n-# ⚠️ Queue overflow by {infractions} times. Please await bot reply before creating more queue."
-                                sent_message = await message.channel.send(chunk)
+                                try:
+                                    sent_message = await self.bot.get_channel(hello_channel_id).send(chunk)
+                                except discord.Forbidden:
+                                    await message.author.send(f"I cannot send messages in the channel: {message.channel.mention}. Please check my permissions.")
+                                    return
                         else:
                             if infractions > 0:
                                 chatbot_response = f"{chatbot_response}\n\n-# ⚠️ Queue overflow by {infractions} times. Please await bot reply before creating more queue."
-                            sent_message = await message.channel.send(chatbot_response)
+                            try:
+                                sent_message = await self.bot.get_channel(hello_channel_id).send(chatbot_response)
+                            except discord.Forbidden:
+                                await message.author.send(f"I cannot send messages in the channel: {message.channel.mention}. Please check my permissions.")
+                                return
 
                 except asyncio.TimeoutError:
-                    await message.channel.send("OpenAI API timed out...")
+                    await self.bot.get_channel(hello_channel_id).send("OpenAI API timed out...")
                     return
                 except subprocess.CalledProcessError as e:
-                    await message.channel.send(f"Error calling API: {e}")
+                    await self.bot.get_channel(hello_channel_id).send(f"Error calling API: {e}")
                     return
                 finally:
                     with ether_lock:
@@ -4992,7 +5018,7 @@ class EthersSession:
                         else:
                             del ether_user_message_counts[user_id]
 
-            asyncio.create_task(hello_ether())
+            asyncio.create_task(hello_ether(message, hello_channel_id, user_id, author_id))
             continue
 
     async def start(self):
@@ -6893,6 +6919,7 @@ class UserSession:
                         )), timeout=60)  
 
                         chatbot_response = response['choices'][0]['message']['content']
+
                     else:
                         data = {
                             "model": self.lm_model,
@@ -6967,7 +6994,7 @@ class UserSession:
 
                     return
                 except asyncio.TimeoutError:
-                    await message.channel.send("API timed out...")
+                    await message.channel.send("OpenAI API timed out...")
                     return
 
         elif self.session_set == True:
