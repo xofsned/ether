@@ -1,302 +1,74 @@
 ---
-description: Configure your ChatGPT experience
+description: Configure Ether's built-in AI for your user / bot interactions
 ---
 
-# ⚙️ OpenAI Configuration
-
-***
+# ⚙️ Built-In AI Configuration
 
 {% hint style="info" %}
-Ether uses API options provided by OpenAI. Any limitations, constraints, or validations are solely for the operability and compliance of Ether with OpenAI's API.&#x20;
+Ether's built-in AI will work for those who do not have an active session in the message channel, and also when there are no shared sessions in the message channel.
+
+Options set in /ether-ai only apply to the user setting the options (per user setting)
 {% endhint %}
 
-***
-
 <details>
 
-<summary>Default session configuration</summary>
+<summary>Select Prompt</summary>
 
-* Tokens: 2000
-* Context: 0
-* Text model: GPT 3.5-Turbo
-* Image model: DALL E 3
-* Role: user
-* Temperature: 0.3
-* Nicknames: False
-* Sharing: False
-* Extensions: None
-* Frequency: 0
-* Presence: 0
-* Top\_P: 0
-* Prompt: None
+_`/ether-ai [ select_prompt ] [ prompt ]`_
 
-</details>
-
-<details>
-
-<summary>API base, endpoint selection</summary>
-
-_`/openai-options [ api_base ] [ endpoint ]`_
-
-* The endpoint address for the OpenAI API call to be sent to
-
-_`/openai-options [ model ] [ custom-model ]`_
-
-* Changes the API route and API call structure from OpenAI to others, like LM Studio
-
-_`/openai-options [ custom_model_name ] [ name ]`_
-
-* The name of the model to be used in the custom endpoint
-
-When configured, Ether can access other OpenAI based enpoints, such as a server instance of LM Studio.&#x20;
-
-To restore defualts:
-
-* set endpoint to 'default'
-* set model to an OpenAI model
-
-</details>
-
-<details>
-
-<summary>Add a prompt</summary>
-
-_`/openai-options [ add_prompt ] [ new prompt ]`_
-
-Give the session a prompt to be used by the author and any members accessing the session as a shared session.&#x20;
-
-</details>
-
-<details>
-
-<summary>User prompt</summary>
-
-_`/openai-options [ user_prompt ] [ prompt ]`_
-
-Give a user their own prompt to be used when they message the bot.
-
-</details>
-
-<details>
-
-<summary>Manage the prompt</summary>
-
-_`/openai-options [ manage_prompt ] [ option ]`_
-
-View or clear the prompt in the active session.
+Select a prompt to use in your interactions
 
 Options:
 
-* `view`
-* `clear`
+* None
+* Esoteric
+* Philosopher
+* Astrologer
+* Programmer
+* Technical Assistant
+* Divination
+* Abstraction&#x20;
+* Wrong Answers Only
+* Sassy
+* Troll
 
 </details>
 
 <details>
 
-<summary>Text model selection</summary>
+<summary>Select Model</summary>
 
-_`/openai-options [ model ] [ option ]`_
+_`/ether-ai [ model ] [ model option ]`_
 
-Select a text generative model to use.
+Select model to use in your interactions
 
 Options:
 
-* `gpt-3.5-turbo`&#x20;
-* `gpt-4`&#x20;
-* `gpt-4o`&#x20;
-* `gpt-4-1106-preview`
-* `gpt-4-0613`
-* `gpt-4-0314`
-* `gpt-3.5-turbo-16k-0613`
-* `gpt-3.5-turbo-16k`
-* `gpt-3.5-turbo-1106`
-* `gpt-3.5-turbo-0613`
-* `gpt-3.5-turbo-0301`
+* Nemo&#x20;
+  * [https://huggingface.co/lmstudio-community/Mistral-Nemo-Instruct-2407-GGUF](https://huggingface.co/lmstudio-community/Mistral-Nemo-Instruct-2407-GGUF)
+* YCoder
+  * [https://huggingface.co/lmstudio-community/Yi-Coder-9B-Chat-GGUF](https://huggingface.co/lmstudio-community/Yi-Coder-9B-Chat-GGUF)
+* Mathstral
+  * [https://huggingface.co/lmstudio-community/mathstral-7B-v0.1-GGUF](https://huggingface.co/lmstudio-community/mathstral-7B-v0.1-GGUF)
 
 </details>
 
 <details>
 
-<summary>Image model selection</summary>
+<summary>Select Temperature</summary>
 
-_`/openai-options [ image_model ] [ option ]`_
+_`/ether-ai [ temperature ] [ amount ]`_
 
-Selects the image model to use
-
-Options:
-
-* `DALL E 2`
-* `DALL E 3`
+Adjusts the temperature of the AI model in your interactions
 
 </details>
 
 <details>
 
-<summary>Assistants</summary>
+<summary>Select Token Limit</summary>
 
-_`/openai-options [ assistant ] [ option ]`_
+_`/ether-ai [ tokens ] [ amount ]`_
 
-Selects an assistant to use
-
-Options:
-
-* `interpreter`
-
-</details>
-
-<details>
-
-<summary>Temperature</summary>
-
-_`/openai-options [ temperature ] [ amount ]`_
-
-Selects the temperature level for the model
-
-Options:
-
-* `0.1 ~ 2.0`
-
-</details>
-
-<details>
-
-<summary>Tokens</summary>
-
-_`/openai-options [ tokens ] [ amount ]`_
-
-Selects the maximum tokens to use on a transaction (including context tokens)
-
-Options:
-
-* `50 ~ 4000`
-
-</details>
-
-<details>
-
-<summary>Role</summary>
-
-_`/openai-options [ role ] [ option ]`_
-
-Selects the role to be applied to messages.
-
-Options:
-
-* `user`
-* `system`
-
-</details>
-
-<details>
-
-<summary>User role</summary>
-
-_`/openai-options [ user_role ] [ option ]`_
-
-Gives a user a specific role to be coupled with their messages when they message the bot.&#x20;
-
-</details>
-
-<details>
-
-<summary>Frequency</summary>
-
-_`/openai-options [ frequency ] [ amount ]`_
-
-Selects the frequency penalty for context transactions
-
-Options:
-
-* `0.1 ~ 2.0`
-
-</details>
-
-<details>
-
-<summary>Presence</summary>
-
-_`/openai-options [ presence ] [ amount ]`_
-
-Selects the presence penalty for context transactions
-
-Options:
-
-* `0.1 ~ 2.0`
-
-</details>
-
-<details>
-
-<summary>Top_P</summary>
-
-_`/openai-options [ top_p ] [ amount ]`_
-
-Selects the top\_p nucleus sampling level
-
-Options:
-
-* `0.1 ~ 2.0`
-
-</details>
-
-<details>
-
-<summary>Style of image</summary>
-
-_`/openai-options [ style ] [ option ]`_
-
-Selects the style of image to generate
-
-Options:
-
-* `Natural`
-* `Vivid`
-
-</details>
-
-<details>
-
-<summary>Number of images</summary>
-
-_`/openai-options [ number ] [ amount ]`_
-
-Selects the number of images to generate in each iteration
-
-Options:
-
-* `1 - 10`
-
-</details>
-
-<details>
-
-<summary>Size of image</summary>
-
-_`/openai-options [ size ] [ option ]`_
-
-Selects the size image size to be generated
-
-Options:
-
-* `DALL E 2`
-  * `256x256, 512x512, 1024x1024`
-* `DALL E 3`
-  * `1024x1024, 1024x1792, 1792x1024`
-
-</details>
-
-<details>
-
-<summary>Revised prompt</summary>
-
-_`/openai-options [ revised_prompt ] [ option ]`_
-
-Selects to enable or disable displaying the returned revised prompt from DALL E 3 with the generated image
-
-Options:
-
-* `Enabled`
-* `Disabled`
+Sets the token limit for your interactions
 
 </details>

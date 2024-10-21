@@ -16,6 +16,10 @@ Associations allow a session author to associate an object - such as a phrase or
 Creating and managing associations in message requires mentioning Ether in the message
 {% endhint %}
 
+{% hint style="info" %}
+Ether can now reference (in AI response) from the associations by keyword. For example, if you have gifs under keyword 'welcome' in your associations, you may prompt your AI interaction to end every response with the keyword "welcome", the AI response will trigger the gif.
+{% endhint %}
+
 <details>
 
 <summary>Associate an object with a keyword</summary>

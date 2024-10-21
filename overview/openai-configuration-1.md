@@ -1,8 +1,14 @@
 ---
-description: Configure your LM Studio experience
+description: Configure your ChatGPT experience
 ---
 
-# ⚙️ LM Studio Configuration
+# ⚙️ OpenAI Configuration
+
+***
+
+{% hint style="info" %}
+Ether uses API options provided by OpenAI. Any limitations, constraints, or validations are solely for the operability and compliance of Ether with OpenAI's API.&#x20;
+{% endhint %}
 
 ***
 
@@ -10,28 +16,44 @@ description: Configure your LM Studio experience
 
 <summary>Default session configuration</summary>
 
-* model - None
-* temperature - 0.7
-* top\_k - 0
-* top\_p - 0
-* endpoint - None
-* repeat penalty - 0
-* frequency penalty - 0
-* presence penalty - 0
-* logit bias - 0
-* seed - None
-* tokens - 2000
-* top string - None
+* Tokens: 2000
+* Context: 0
+* Text model: GPT 3.5-Turbo
+* Image model: DALL E 3
+* Role: user
+* Temperature: 0.3
+* Nicknames: False
+* Sharing: False
+* Extensions: None
+* Frequency: 0
+* Presence: 0
+* Top\_P: 0
+* Prompt: None
 
 </details>
 
 <details>
 
-<summary>Endpoint</summary>
+<summary>API base, endpoint selection</summary>
 
-_`/lmstudio-options [ endpoint ] [ web endpoint ]`_
+_`/openai-options [ api_base ] [ endpoint ]`_
 
-Enter an endpoint to use with LM Studio API
+* The endpoint address for the OpenAI API call to be sent to
+
+_`/openai-options [ model ] [ custom-model ]`_
+
+* Changes the API route and API call structure from OpenAI to others, like LM Studio
+
+_`/openai-options [ custom_model_name ] [ name ]`_
+
+* The name of the model to be used in the custom endpoint
+
+When configured, Ether can access other OpenAI based enpoints, such as a server instance of LM Studio.&#x20;
+
+To restore defualts:
+
+* set endpoint to 'default'
+* set model to an OpenAI model
 
 </details>
 
@@ -39,7 +61,7 @@ Enter an endpoint to use with LM Studio API
 
 <summary>Add a prompt</summary>
 
-_`/lmsudio-options [ add_prompt ] [ new prompt ]`_
+_`/openai-options [ add_prompt ] [ new prompt ]`_
 
 Give the session a prompt to be used by the author and any members accessing the session as a shared session.&#x20;
 
@@ -49,7 +71,7 @@ Give the session a prompt to be used by the author and any members accessing the
 
 <summary>User prompt</summary>
 
-_`/lmstudio-options [ user_prompt ] [ prompt ]`_
+_`/openai-options [ user_prompt ] [ prompt ]`_
 
 Give a user their own prompt to be used when they message the bot.
 
@@ -59,7 +81,7 @@ Give a user their own prompt to be used when they message the bot.
 
 <summary>Manage the prompt</summary>
 
-_`/lmstudio-options [ manage_prompt ] [ option ]`_
+_`/openai-options [ manage_prompt ] [ option ]`_
 
 View or clear the prompt in the active session.
 
@@ -72,11 +94,54 @@ Options:
 
 <details>
 
-<summary>model selection</summary>
+<summary>Text model selection</summary>
 
-_`/lmstudio-options [ model ] [ user provided model ]`_
+_`/openai-options [ model ] [ option ]`_
 
-User gives the model name string supplied to them by LM Studio API
+Select a text generative model to use.
+
+Options:
+
+* `gpt-3.5-turbo`&#x20;
+* `gpt-4`&#x20;
+* `gpt-4o`&#x20;
+* `gpt-4-1106-preview`
+* `gpt-4-0613`
+* `gpt-4-0314`
+* `gpt-3.5-turbo-16k-0613`
+* `gpt-3.5-turbo-16k`
+* `gpt-3.5-turbo-1106`
+* `gpt-3.5-turbo-0613`
+* `gpt-3.5-turbo-0301`
+
+</details>
+
+<details>
+
+<summary>Image model selection</summary>
+
+_`/openai-options [ image_model ] [ option ]`_
+
+Selects the image model to use
+
+Options:
+
+* `DALL E 2`
+* `DALL E 3`
+
+</details>
+
+<details>
+
+<summary>Assistants</summary>
+
+_`/openai-options [ assistant ] [ option ]`_
+
+Selects an assistant to use
+
+Options:
+
+* `interpreter`
 
 </details>
 
@@ -84,13 +149,13 @@ User gives the model name string supplied to them by LM Studio API
 
 <summary>Temperature</summary>
 
-_`/lmstudio-options [ temperature ] [ amount ]`_
+_`/openai-options [ temperature ] [ amount ]`_
 
 Selects the temperature level for the model
 
 Options:
 
-* `0.1 ~ 1.0`
+* `0.1 ~ 2.0`
 
 </details>
 
@@ -110,29 +175,40 @@ Options:
 
 <details>
 
-<summary>Frequency</summary>
+<summary>Role</summary>
 
-_`/lmstudio-options [ frequency_penalty ] [ amount ]`_
+_`/openai-options [ role ] [ option ]`_
 
-Selects the frequency penalty&#x20;
+Selects the role to be applied to messages.
 
 Options:
 
-* `0.1 ~ 1.0`
+* `user`
+* `system`
 
 </details>
 
 <details>
 
-<summary>Repeat</summary>
+<summary>User role</summary>
 
-_`/lmstudio-options [ repeat_penalty ] [ amount ]`_
+_`/openai-options [ user_role ] [ option ]`_
 
-Selects the repeat penalty&#x20;
+Gives a user a specific role to be coupled with their messages when they message the bot.&#x20;
+
+</details>
+
+<details>
+
+<summary>Frequency</summary>
+
+_`/openai-options [ frequency ] [ amount ]`_
+
+Selects the frequency penalty for context transactions
 
 Options:
 
-* `0.1 ~ 1.0`
+* `0.1 ~ 2.0`
 
 </details>
 
@@ -140,13 +216,13 @@ Options:
 
 <summary>Presence</summary>
 
-_`/lmstudio-options [ presence_penalty ] [ amount ]`_
+_`/openai-options [ presence ] [ amount ]`_
 
-Selects the presence penalty&#x20;
+Selects the presence penalty for context transactions
 
 Options:
 
-* `0.1 ~ 1.0`
+* `0.1 ~ 2.0`
 
 </details>
 
@@ -154,62 +230,73 @@ Options:
 
 <summary>Top_P</summary>
 
-_`/lmstudio-options [ top_p ] [ amount ]`_
+_`/openai-options [ top_p ] [ amount ]`_
 
-Selects the top\_p amount
-
-Options:
-
-* `0.1 ~ 1.0`
-
-</details>
-
-<details>
-
-<summary>Top_K</summary>
-
-
-
-_`/lmstudio-options [ top_k ] [ amount ]`_
-
-Selects the top\_k amount
+Selects the top\_p nucleus sampling level
 
 Options:
 
-* `0.1 ~ 1.0`
+* `0.1 ~ 2.0`
 
 </details>
 
 <details>
 
-<summary>Stop String</summary>
+<summary>Style of image</summary>
 
-_`/lmstudio-options [ stop_string ] [ string ]`_
+_`/openai-options [ style ] [ option ]`_
 
-Add a stop string to be used in LM Studio API parsing
-
-</details>
-
-<details>
-
-<summary>Seed</summary>
-
-_`/lmstudio-options [ frequency_penalty ] [ amount ]`_
-
-Choose a seed to use in LM Studio API parsing
-
-</details>
-
-<details>
-
-<summary>Logit Bias</summary>
-
-_`/lmstudio-options [ logit_bias ] [ amount ]`_
-
-Selects the logit bias amount
+Selects the style of image to generate
 
 Options:
 
-* `0.1 ~ 1.0`
+* `Natural`
+* `Vivid`
+
+</details>
+
+<details>
+
+<summary>Number of images</summary>
+
+_`/openai-options [ number ] [ amount ]`_
+
+Selects the number of images to generate in each iteration
+
+Options:
+
+* `1 - 10`
+
+</details>
+
+<details>
+
+<summary>Size of image</summary>
+
+_`/openai-options [ size ] [ option ]`_
+
+Selects the size image size to be generated
+
+Options:
+
+* `DALL E 2`
+  * `256x256, 512x512, 1024x1024`
+* `DALL E 3`
+  * `1024x1024, 1024x1792, 1792x1024`
+
+</details>
+
+<details>
+
+<summary>Revised prompt</summary>
+
+_`/openai-options [ revised_prompt ] [ option ]`_
+
+Selects to enable or disable displaying the returned revised prompt from DALL E 3 with the generated image
+
+Options:
+
+* `Enabled`
+* `Disabled`
 
 </details>

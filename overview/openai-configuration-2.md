@@ -1,74 +1,215 @@
 ---
-description: Configure Ether's built-in AI for your user / bot interactions
+description: Configure your LM Studio experience
 ---
 
-# ⚙️ Built-In AI Configuration
+# ⚙️ LM Studio Configuration
 
-{% hint style="info" %}
-Ether's built-in AI will work for those who do not have an active session in the message channel, and also when there are no shared sessions in the message channel.
-
-Options set in /ether-ai only apply to the user setting the options (per user setting)
-{% endhint %}
+***
 
 <details>
 
-<summary>Select Prompt</summary>
+<summary>Default session configuration</summary>
 
-_`/ether-ai [ select_prompt ] [ prompt ]`_
+* model - None
+* temperature - 0.7
+* top\_k - 0
+* top\_p - 0
+* endpoint - None
+* repeat penalty - 0
+* frequency penalty - 0
+* presence penalty - 0
+* logit bias - 0
+* seed - None
+* tokens - 2000
+* top string - None
 
-Select a prompt to use in your interactions
+</details>
+
+<details>
+
+<summary>Endpoint</summary>
+
+_`/lmstudio-options [ endpoint ] [ web endpoint ]`_
+
+Enter an endpoint to use with LM Studio API
+
+</details>
+
+<details>
+
+<summary>Add a prompt</summary>
+
+_`/lmsudio-options [ add_prompt ] [ new prompt ]`_
+
+Give the session a prompt to be used by the author and any members accessing the session as a shared session.&#x20;
+
+</details>
+
+<details>
+
+<summary>User prompt</summary>
+
+_`/lmstudio-options [ user_prompt ] [ prompt ]`_
+
+Give a user their own prompt to be used when they message the bot.
+
+</details>
+
+<details>
+
+<summary>Manage the prompt</summary>
+
+_`/lmstudio-options [ manage_prompt ] [ option ]`_
+
+View or clear the prompt in the active session.
 
 Options:
 
-* None
-* Esoteric
-* Philosopher
-* Astrologer
-* Programmer
-* Technical Assistant
-* Divination
-* Abstraction&#x20;
-* Wrong Answers Only
-* Sassy
-* Troll
+* `view`
+* `clear`
 
 </details>
 
 <details>
 
-<summary>Select Model</summary>
+<summary>model selection</summary>
 
-_`/ether-ai [ model ] [ model option ]`_
+_`/lmstudio-options [ model ] [ user provided model ]`_
 
-Select model to use in your interactions
+User gives the model name string supplied to them by LM Studio API
+
+</details>
+
+<details>
+
+<summary>Temperature</summary>
+
+_`/lmstudio-options [ temperature ] [ amount ]`_
+
+Selects the temperature level for the model
 
 Options:
 
-* Nemo&#x20;
-  * [https://huggingface.co/lmstudio-community/Mistral-Nemo-Instruct-2407-GGUF](https://huggingface.co/lmstudio-community/Mistral-Nemo-Instruct-2407-GGUF)
-* YCoder
-  * [https://huggingface.co/lmstudio-community/Yi-Coder-9B-Chat-GGUF](https://huggingface.co/lmstudio-community/Yi-Coder-9B-Chat-GGUF)
-* Mathstral
-  * [https://huggingface.co/lmstudio-community/mathstral-7B-v0.1-GGUF](https://huggingface.co/lmstudio-community/mathstral-7B-v0.1-GGUF)
+* `0.1 ~ 1.0`
 
 </details>
 
 <details>
 
-<summary>Select Temperature</summary>
+<summary>Tokens</summary>
 
-_`/ether-ai [ temperature ] [ amount ]`_
+_`/openai-options [ tokens ] [ amount ]`_
 
-Adjusts the temperature of the AI model in your interactions
+Selects the maximum tokens to use on a transaction (including context tokens)
+
+Options:
+
+* `50 ~ 4000`
 
 </details>
 
 <details>
 
-<summary>Select Token Limit</summary>
+<summary>Frequency</summary>
 
-_`/ether-ai [ tokens ] [ amount ]`_
+_`/lmstudio-options [ frequency_penalty ] [ amount ]`_
 
-Sets the token limit for your interactions
+Selects the frequency penalty&#x20;
+
+Options:
+
+* `0.1 ~ 1.0`
+
+</details>
+
+<details>
+
+<summary>Repeat</summary>
+
+_`/lmstudio-options [ repeat_penalty ] [ amount ]`_
+
+Selects the repeat penalty&#x20;
+
+Options:
+
+* `0.1 ~ 1.0`
+
+</details>
+
+<details>
+
+<summary>Presence</summary>
+
+_`/lmstudio-options [ presence_penalty ] [ amount ]`_
+
+Selects the presence penalty&#x20;
+
+Options:
+
+* `0.1 ~ 1.0`
+
+</details>
+
+<details>
+
+<summary>Top_P</summary>
+
+_`/lmstudio-options [ top_p ] [ amount ]`_
+
+Selects the top\_p amount
+
+Options:
+
+* `0.1 ~ 1.0`
+
+</details>
+
+<details>
+
+<summary>Top_K</summary>
+
+
+
+_`/lmstudio-options [ top_k ] [ amount ]`_
+
+Selects the top\_k amount
+
+Options:
+
+* `0.1 ~ 1.0`
+
+</details>
+
+<details>
+
+<summary>Stop String</summary>
+
+_`/lmstudio-options [ stop_string ] [ string ]`_
+
+Add a stop string to be used in LM Studio API parsing
+
+</details>
+
+<details>
+
+<summary>Seed</summary>
+
+_`/lmstudio-options [ frequency_penalty ] [ amount ]`_
+
+Choose a seed to use in LM Studio API parsing
+
+</details>
+
+<details>
+
+<summary>Logit Bias</summary>
+
+_`/lmstudio-options [ logit_bias ] [ amount ]`_
+
+Selects the logit bias amount
+
+Options:
+
+* `0.1 ~ 1.0`
 
 </details>
