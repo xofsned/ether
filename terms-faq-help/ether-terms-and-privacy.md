@@ -6,6 +6,25 @@ description: By using Ether you agree to and acknowledge the subjects below
 
 ***
 
+{% hint style="info" %}
+The following terms apply 11/11/2024 reflecting the refactor from Ether v29\~ to a new v30 (min)
+{% endhint %}
+
+You acknowledge and agree to the following conditions:
+
+* Ether will not store or redistribute information
+* Ether no longer operates in the Cloud (see tip below)
+* Ether is for free and fun AI use in Discord, there are no intentions to:
+  * monitize Ether
+  * collect user data
+  * redistribute data
+* Ether, while in operation, will store user id's to map the user's selected model and prompt when bundling the AI call
+* Ether's AI is hosted by the developer, with the models used listed in `/ether-status`
+
+{% hint style="info" %}
+The terms below are depreciated as of 11/11/2024, per the removal of OpenAPI API support and LM Studio support. Please refer to the details above.
+{% endhint %}
+
 ### You agree that Ether will relay your OpenAI key, messages, and provided files to OpenAI
 
 > Ether is a toolkit / relay system using a class instance. In your initialized instance, your OpenAPI key is stored as a local temporary variable while the session is active. This looped session will process and send your OpenAI API key, your message for ChatGPT, and files you choose to embed to OpenAI.
