@@ -1,5 +1,10 @@
 # 👋 Welcome to Ether
+---> For > v30 (min) 11/11/2024
+The legacy Ether has depreciated OpenAI, LMStudio, and user sessions support - due to recent dangers in *build your own chatbot* chatbots. 
+See `ether.min.py` - a minimal system for LM Studio with model, temperature, tokens, and prompt options.
+Built for multi-user environments with a user options approach.
 
+---> For < v29 (no longer being hosted or maintained as of 11/11/2024)
 > Ether is an AI toolkit that aims to give users the power to configure their OpenAI or LM Studio experience in Discord using an amnesiac approach
  * See: https://ether-2.gitbook.io/ether
 ### AI Support
